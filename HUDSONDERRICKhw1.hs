@@ -1,0 +1,1 @@
+minlist xs = error "No Solution"
