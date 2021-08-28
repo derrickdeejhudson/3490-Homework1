@@ -31,10 +31,14 @@ findOdd (x:xs)  | odd x = Just x
 -- removes all empty strings from a list
 removeEmpty :: [String] -> [String]
 removeEmpty [] = []
-removeEmpty [""] = []
--- removeEmpty [x] = [x]
-removeEmpty (x:xs)  | x == "" = removeEmpty xs
-                    | x /= "" = x 
+removeEmpty (x:xs) = if x == "" then removeEmpty xs else x:[] ++ removeEmpty xs
+
+-- makes a list of non-Nothing values
+catMaybes :: [Maybe a] -> [a]
+catMaybes [] = []
+catMaybes (Nothing:xs) = catMaybes xs
+catMaybes (Just y:ys) = Just y:[] ++ catMaybes ys
+
 
 
 -- custom implementation of the parity check
