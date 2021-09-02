@@ -1,4 +1,4 @@
-minlist xs = error "No Solution"
+-- minlist xs = error "No Solution"
 
 -- returns the minimum element of a list.
 minList :: [Integer] -> Integer
@@ -34,10 +34,89 @@ removeEmpty [] = []
 removeEmpty (x:xs) = if x == "" then removeEmpty xs else x:[] ++ removeEmpty xs
 
 -- makes a list of non-Nothing values
-catMaybes :: [Maybe a] -> [a]
-catMaybes [] = []
-catMaybes (Nothing:xs) = catMaybes xs
-catMaybes (Just y:ys) = Just y:[] ++ catMaybes ys
+catMaybes :: [Maybe a] -> Maybe a
+catMaybes xs = error "No Solution"
+--catMaybes [] = []
+--catMaybes (x:xs) = if x == Nothing then catMaybes xs else [xs] ++ catMaybes xs
+--catMaybes (Nothing:xs) = catMaybes xs
+--catMaybes (Just y:xs) = Just y
+
+--catMaybes (x:xs) = case x of
+--        Nothing -> catMaybes xs
+--        Just y -> Just y:[] ++ catMaybes xs
+
+--catMaybes (Nothing:xs) = catMaybes xs
+--catMaybes (Just y:xs) = Just y:[] ++ catMaybes xs
+
+collect :: [Either a b] -> ([a], [b])
+collect xs = error "No Solution"
+
+isPrefix :: (Eq a) => [a] -> [a] -> [a]
+isPrefix xs = error "No Solution"
+
+findIndex :: Integer -> [Integer] -> Maybe Integer
+findIndex xs = error "No Solution"
+
+repeatInt :: a -> Integer -> [a]
+repeatInt xs = error "No Solution"
+
+--tag every element with index list
+addIndex :: [a] -> [(Integer, a)]
+addIndex xs = addIndexHelper xs 0
+
+addIndexHelper :: [a] -> Integer -> [(Integer, a)]
+addIndexHelper [] n = []
+addIndexHelper (x:xs) n = (n,x): addIndexHelper xs (n + 1)
+
+--invert the pairs of a list
+swapAll :: [(a,b)] -> [(b,a)]
+swapAll [] = []
+swapAll [(x,y)] = [(y,x)]
+--swapAll [(x,y):xs] = [(y,x)] swapAll xs
+--swap (a,b) = (b,a)
+
+--swapAllHelper ::[(a,b)] -> Integer -> [(b,a)]
+--swapAllHelper [] n = []
+--swapAllHelper (x:y:xs) n = (x,y): swapAll xs (y,x) (n + 1)
+
+findDouble :: a -> [(a,a)]
+findDouble xs = error "No Solution"
+
+-- True if matches the form (Just x)
+defined :: Maybe a -> Bool
+defined Nothing = False
+defined _       = True
+
+--skips every other entry on the list
+skip :: [a] -> [a]
+skip xs = error "No Solution"
+
+--removes evens
+removeEvens :: [Integer] -> [Integer]
+removeEvens [] = []
+removeEvens (x:xs) | odd x = x : removeEvens xs
+                   | otherwise = removeEvens xs
+
+--doubles all entries
+doubleAll :: [Integer] -> [Integer]
+doubleAll xs = [2*x | x<-xs]
+doubleAll [] = []
+doubleAll (x:xs) = 2*x : doubleAll xs
+
+-- takes lists and makes it one list
+flatten :: [[a]] -> [a]
+flatten [] = []
+flatten ([]:xs) = flatten xs
+flatten ((x:xs):xxs) = x:flatten (xs:xxs)
+
+countInt :: Integer -> [Integer] -> Integer
+--countInt [] n = 0
+countInt xs = error "No Solution"
+
+countEq :: Eq a => [a] -> a -> Integer
+countEq [] n = 0
+countEq (x:xs) n | n == x = 1 + (countEq xs n)
+                 | otherwise = countEq xs n
 
 
 
